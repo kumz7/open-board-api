@@ -1,0 +1,8 @@
+//to install homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+//to install gradle
+brew install gradle
+
+//to create java project in gradle
+gradle init --type java-library
