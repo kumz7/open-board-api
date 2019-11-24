@@ -24,8 +24,8 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="user_id")
 	public long userId;
-
-	String username,password,first_name,last_name,phone_no;
+ 
+	String username,password,email,first_name,last_name,phone_no;
 	
 	boolean password_reset;
 	
