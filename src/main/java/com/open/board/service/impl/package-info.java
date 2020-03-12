@@ -5,4 +5,4 @@
  * @author mac
  *
  */
-package com.open.board.model;
+package com.open.board.service.impl;

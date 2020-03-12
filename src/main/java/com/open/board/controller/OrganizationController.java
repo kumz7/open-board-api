@@ -19,33 +19,38 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.open.board.model.Organization;
 import com.open.board.model.User;
+import com.open.board.service.OrganizationService;
+import com.open.board.service.UserMappingService;
 import com.open.board.service.UserService;
 
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("organization")
+public class OrganizationController {
 	@Autowired
-	UserService service;
+	OrganizationService service;
+	
+	@Autowired
+	UserMappingService umService;
 	
 	@PostMapping()
-	public User createUser(@RequestBody User user) {
-		return service.createOrUpdate(user);
+	public Organization createOrganization(@RequestBody Organization org) {
+		return service.createOrUpdateOrganization(org);
 	}
 	@PutMapping() 
-	public User updateUser(@RequestBody User user) {
-		return service.createOrUpdate(user);
+	public Organization updateOrganization(@RequestBody Organization org) {
+		return service.createOrUpdateOrganization(org);
 	}
 	@DeleteMapping(path="/{nameOrEmail}") 
-	public Boolean deleteUser(@PathVariable String nameOrEmail) {
-		return service.deleteUser(nameOrEmail); 
+	public Boolean deleteOrganization(@PathVariable String nameOrEmail) {
+		return service.deleteOrganization(nameOrEmail); 
 	}
 	@GetMapping("/all")
-	public List<User> getAllUser() {
-		return service.getAllUser();
-	}
-	@GetMapping()
-	public User getUser(@RequestBody User user) {
-		return service.createOrUpdate(user);
+	public List<Organization> getAllOrganization() {
+		return service.getAllOrganization();
 	}
 	
+	@GetMapping()
+	public List<Organization> test(){
+		return umService.getOrganizationForUser("kumaran"); 
+	}
 }
